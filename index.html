@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OCR GCSE Computer Science Unit 3</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">OCR GCSE (J277) Unit 3 Revision helper</div>
+        <div class="nav-links" style="display:flex; align-items:center;">
+            <button id="btnLearn" class="nav-btn active">Learn</button>
+            <button id="btnProtocols" class="nav-btn">Protocols</button>
+            <button id="btnQuiz" class="nav-btn">Quiz</button>
+            <div style="width:1px; height:24px; background:rgba(255,255,255,0.3); margin:0 15px;"></div>
+            <select id="themeSelector" style="background:var(--bg-input); color:var(--text-main); border:1px solid var(--border-color); border-radius:var(--radius); padding:5px 10px; font-family:'Bahnschrift', sans-serif; cursor:pointer; outline:none; margin-right:15px;">
+                <option value="classic">Classic</option>
+                <option value="neon">Neon</option>
+                <option value="catppuccin-mocha">Catppuccin Mocha</option>
+                <option value="catppuccin-latte">Catppuccin Iced Latte</option>
+                <option value="github-dark">GitHub Dark</option>
+                <option value="github-light">GitHub Light</option>
+                <option value="nord">Nord</option>
+            </select>
+            <a href="https://www.ocr.org.uk/Images/558027-specification-gcse-computer-science-j277.pdf" target="_blank" style="color:var(--text-main); text-decoration:none; font-family:'Bahnschrift', sans-serif; font-size:1rem; padding:8px 12px; border-radius:4px; transition:background 0.3s;" onmouseover="this.style.background='rgba(128,128,128,0.2)'" onmouseout="this.style.background='transparent'">J277 Spec (External link)</a>
+        </div>
+    </nav>
+
+
+
+    <main>
+    <section id="viewLearn" class="view active-view">
+        <h1>Networks, Connections & Hardware</h1>
+
+        <div class="masonry-layout">
+            <div class="layout-col">
+                <div class="card">
+                    <h2>The Internet vs The World Wide Web</h2>
+                    <p>The Internet is a worldwide collection of inter-connected networks, not owned or managed by any one group of people. Anyone can access the Internet.</p>
+                    <p>The Internet is not the same thing as the World Wide Web. Websites are stored on web servers connected to the Internet, and each site has a unique web address so that it can be accessed. All information on the World Wide Web is stored in documents known as web pages. These pages are accessed using a program called a web browser such as Firefox, Mozilla or Google Chrome.</p>
+                    <p>The Web is just one of the ways in which information is communicated over the Internet. The Internet, not the Web, is used for email and instant messaging.</p>
+                </div>
+
+                <div class="card">
+                    <h2>IP addressing</h2>
+                    <p>Every networked computer or computing device in the world has a separate, unique IP address, although you will see later that a mobile device's IP address changes as it moves location. The current addressing system is called IPv4. An IPv4 address is typically written in dotted decimal digits, formatted as four 8-bit fields separated by full stops. Each 8-bit field represents a byte of the IPv4 address. IP stands for Internet Protocol and an IP version 4 address takes the form: 65.123.217.14</p>
+                    <p>There are 4.3 billion IPv4 addresses and in 2020 there were over 30 billion connected devices. This is expected to double by 2025. We have run out of IPv4 addresses so a new system, IPv6, is replacing it.</p>
+                    <p>An IPv6 address is 128 bits long, (four times as long as an IPv4 address), arranged in eight groups of 16 bits each. Each group is four hexadecimal digits, separated by colons.</p>
+                    
+                    <div class="converter-container" style="padding:15px; margin-top:15px; max-width:100%;">
+                        <h3 style="margin-top:0; color:var(--text-main); font-size:1rem;">IPv4 Address Breakdown</h3>
+                        <div style="display:flex; gap:10px; justify-content:center; margin-bottom:15px; align-items:center;">
+                            <input type="number" class="ip-octet" value="192" min="0" max="255" style="width:70px; text-align:center; font-family:monospace; font-size:1.1rem; padding:8px;">
+                            <span style="color:var(--text-main); font-weight:bold; font-size:1.5rem;">.</span>
+                            <input type="number" class="ip-octet" value="168" min="0" max="255" style="width:70px; text-align:center; font-family:monospace; font-size:1.1rem; padding:8px;">
+                            <span style="color:var(--text-main); font-weight:bold; font-size:1.5rem;">.</span>
+                            <input type="number" class="ip-octet" value="0" min="0" max="255" style="width:70px; text-align:center; font-family:monospace; font-size:1.1rem; padding:8px;">
+                            <span style="color:var(--text-main); font-weight:bold; font-size:1.5rem;">.</span>
+                            <input type="number" class="ip-octet" value="1" min="0" max="255" style="width:70px; text-align:center; font-family:monospace; font-size:1.1rem; padding:8px;">
+                        </div>
+                        <div class="bit-total" style="font-size:1rem; margin-top:10px;">
+                            Binary: <br><span id="ipBinaryOut" style="color:var(--accent); font-family:monospace; word-break:break-all;">11000000.10101000.00000000.00000001</span><br>
+                            <span style="font-size:0.85rem; color:var(--text-muted); display:block; margin-top:10px;">Each of the 4 sections is an 8-bit byte (octet). 4 x 8 = 32 bits total.</span>
+                        </div>
+                    </div>
+                    
+                    <div class="converter-container" style="padding:15px; margin-top:15px; max-width:100%;">
+                        <h3 style="margin-top:0; color:var(--text-main); font-size:1rem;">IPv6 Example</h3>
+                        <div style="font-family:monospace; color:var(--accent); font-size:1.1rem; text-align:center; padding:10px; background:var(--bg-input); border-radius:var(--radius); border:1px solid var(--border-color); word-break:break-all;">
+                            2001:0db8:85a3:0000:0000:8a2e:0370:7334
+                        </div>
+                        <div style="text-align:center; font-size:0.85rem; color:var(--text-muted); margin-top:10px;">
+                            8 groups of 4 hex digits. Each hex digit = 4 bits.<br>
+                            8 x 4 x 4 = 128 bits total.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>MAC addressing</h2>
+                    <p>In order to connect to the Internet, a computer device must have a piece of hardware called a Network Interface Controller/card (NIC). Each NIC has a Media Access Control or MAC address assigned to it by the manufacturer. Your computer may have more than one MAC address - one for wired Ethernet and one for wireless. A mobile phone may have different MAC addresses for wireless and Bluetooth.</p>
+                    <p>A MAC address is a 48-bit address that is written as twelve hex digits to make it easier for humans to work with.</p>
+                </div>
+
+                <div class="card">
+                    <h2>Network hardware</h2>
+                    <p><strong>Routers and switches:</strong> A router is designed to route data packets across a wide area network such as the Internet. It is used for connecting networks. Each router in a network acts as a node and packets are passed from router to router to their destination somewhere on the Internet. If a packet is destined for a computer in a LAN, it will typically be routed to a switch.</p>
+                    <p>A switch is a component of a LAN that learns the MAC addresses of each individual device connected to it locally. Its function is to forward the inbound packets only to the intended recipient, using the recipient's MAC address and the port it is connected to.</p>
+                    <p><strong>Network Interface Card (NIC):</strong> A Network Interface Card (NIC) is required to connect any network-enabled device. This is a physical component which can either operate wirelessly or have a wired connection using a standard Ethernet cable.</p>
+                    <p><strong>Wireless Access Points (WAPs):</strong> A wireless transmitter (Wireless Access Point - WAP) receives data from a network via its physical connection. The transmitter then converts this data into radio waves which are then transmitted. Any device on the network receives this radio signal via a Wi-Fi adaptor which allows it to communicate or download data from the data source.</p>
+                </div>
+            </div>
+
+            <div class="layout-col">
+                <div class="card">
+                    <h2>Domain names and DNS</h2>
+                    <p>Websites are stored on web servers connected to the Internet. Each website has an IP address so people can access the pages using their browser software. However, when you want to access a site you don't enter the IP address, you type in a domain name or URL (Uniform Resource Locator) such as www.rspb.org.uk.</p>
+                    <p>When you type the domain name www.rspb.org.uk into a browser, the web page request is sent to a Domain Name Server on the Internet. Each DNS server has a database that maps domain names to IP addresses so it can translate the human-friendly domain name into an IP address.</p>
+                    <p><strong>When a user types a URL:</strong></p>
+                    <ul>
+                        <li>The URL is sent to a local DNS server where it is translated into an IP address.</li>
+                        <li>If the IP address is found, it is passed back to the browser.</li>
+                        <li>If the IP address is not found, it is passed 'up the chain' to the next DNS server.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h2>WANs vs LANs</h2>
+                    <p><strong>Wide Area Networks:</strong> The Internet is the largest and most famous Wide Area Network in the world but some large and medium-sized organisations have their own private Wide Area Networks, or WANs. A WAN is a collection of computers and networks connected together using resources supplied by a 'third party carrier' such as British Telecom. It uses cables, telephone lines, satellites and radio waves to connect the components, which are usually spread over a wide geographical area.</p>
+                    <p><strong>Local Area Networks (LANs):</strong> A Local Area Network (LAN) usually covers a relatively small geographical area. It consists of a collection of computers and peripheral devices (such as printers) connected together, often on a single site. A LAN is often owned and managed by a single person or organisation.</p>
+                </div>
+
+                <div class="card">
+                    <h2>Network Topologies</h2>
+                    <p>Computers can be connected together in different layouts, or topologies. Two common topologies are star and mesh.</p>
+                    <p><strong>Star networks:</strong> All of the computers have their own cable connecting them to a hub, switch or computer which acts as a server.</p>
+                    <p><strong>Mesh networks:</strong> A mesh network can be a local area network (LAN), a wireless LAN (WLAN) or a virtual LAN. In a wireless mesh network, there is no central connection point. Instead, each point on the network acts as a 'node', equipped with a small radio transmitter. Information travels from node A to node B by hopping wirelessly from one mesh node to another, choosing the quickest route.</p>
+                </div>
+
+                <div class="card">
+                    <h2>Factors affecting network performance</h2>
+                    <ul>
+                        <li><strong>Bandwidth</strong> is the main factor affecting network performance. Bandwidth is measured in megabits per second (Mbps), and the higher the bandwidth, the faster data is transferred.</li>
+                        <li><strong>Number of devices connected.</strong> Network load or a large number of users can slow down network performance.</li>
+                        <li><strong>Latency</strong> is the time delay between the moment that transmission of the first byte or packet of a communication starts, and when it is received at its destination.</li>
+                        <li><strong>Errors in transmission</strong> due to noise or distortion mean that the data has to be retransmitted.</li>
+                        <li><strong>Interference</strong> during Wi-Fi transmission from other devices. Thick walls between the router and the Wi-Fi device can result in a weak Wi-Fi connection.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="viewProtocols" class="view hidden-view">
+        <h1>Protocols & Layers</h1>
+
+        <div class="masonry-layout">
+            <div class="layout-col">
+                <div class="card">
+                    <h2>Standards & Protocols</h2>
+                    <p>Standards allow hardware and software to interact across different manufacturers or producers.</p>
+                    <p>If one computer transmits a stream of binary to another computer, the receiving end needs to know what protocol is being used. A protocol is the set of rules that define how devices communicate.</p>
+                </div>
+
+                <div class="card">
+                    <h2>Common Protocols</h2>
+                    <ul>
+                        <li><strong>TCP/IP:</strong> TCP/IP consists of two separate protocols. TCP is a standard that defines how messages are broken up into packets and reassembled at the destination. It also detects errors and resends lost packets. The IP protocol identifies the location of a device on the Internet and routes the individual packets from source to destination via routers.</li>
+                        <li><strong>HTTP (HyperText Transfer Protocol):</strong> is used for accessing and receiving web pages in the form of HTML (Hypertext Markup Language) files on the Internet.</li>
+                        <li><strong>HTTPS (HyperText Transfer Protocol Secure):</strong> encrypts the information so that it cannot be understood if it is hacked.</li>
+                        <li><strong>FTP (File Transfer Protocol):</strong> This is a standard network protocol used when transferring computer files between a client and server on a computer network.</li>
+                        <li><strong>POP (Post Office Protocol):</strong> POP receives and holds email for an individual until they pick it up. Periodically, you will check your mailbox on the server and download any mail, probably using POP.</li>
+                        <li><strong>IMAP (Internet Messaging Access Protocol):</strong> The Internet Message Access Protocol (IMAP) is an email protocol that stores email messages on a server but allows users to view and manipulate the messages as though they were stored locally on their own computers.</li>
+                        <li><strong>SMTP (Simple Mail Transfer Protocol):</strong> SMTP is a protocol for sending e-mail messages between servers.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="layout-col">
+                <div class="card">
+                    <h2>The concept of layers</h2>
+                    <p>The TCP/IP model consists of four layers, creating a modular design with each layer responsible for a small part of the communication process.</p>
+                    <ul>
+                        <li><strong>Application layer:</strong> At the top there is the Application layer which encodes the data being sent so that it will be understandable by the recipient. This means formatting data and adding an appropriate header according to a protocol being used, such as HTTP or FTP.</li>
+                        <li><strong>Transport layer:</strong> Next there is the Transport layer which splits the data into packets and adds packet information such as packet number specifying that packet's order and the total number of packets so they can be reassembled correctly.</li>
+                        <li><strong>Internet layer:</strong> The third layer is the Internet layer which attaches the IP address of the sender so the recipient will know who sent it. It also attaches the address of the host that is sending the data, and the destination IP address.</li>
+                        <li><strong>Link layer:</strong> The fourth layer is the Link layer which attaches the MAC addresses of the sender and the recipient, allowing the packet to be directed to a specific device on a local area network, for example.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h2>Circuit switching and packet switching</h2>
+                    <p>When you make a telephone call, a dedicated connection is set up between you and the person you are calling for the duration of the call. This is called circuit switching. This is fine for telephone calls, but there could never be enough lines for all the billions of people sending data across the Internet. This is where packet switching comes in.</p>
+                    <p>Suppose you want to send a file of 3MB across the Internet. The file is broken up into data 'packets' of around 512 bytes. Each packet is given a header containing:</p>
+                    <ul>
+                        <li>The IP (Internet Protocol) address it is going to</li>
+                        <li>The IP address it has come from</li>
+                        <li>The sequence number of the packet</li>
+                        <li>The number of packets in the whole communication</li>
+                        <li>Error checking data</li>
+                    </ul>
+                    <p>Packets are then sent to their destination along different routes, and reassembled in the right order when they arrive.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="viewQuiz" class="view hidden-view">
+        <div class="quiz-container">
+            <h1>Revision Quiz</h1>
+
+            <div id="quizSetup">
+                <h2>Quiz Settings</h2>
+
+                <div class="setting-group">
+                    <label>Select Question Types:</label>
+                    <div class="cb-container" style="flex-wrap: wrap;">
+                        <div class="custom-cb">
+                            <input type="checkbox" id="typeDefinitions" checked hidden>
+                            <label for="typeDefinitions" class="cb-btn">Definitions & Hardware</label>
+                        </div>
+                        <div class="custom-cb">
+                            <input type="checkbox" id="typeProtocols" checked hidden>
+                            <label for="typeProtocols" class="cb-btn">Protocols</label>
+                        </div>
+                        <div class="custom-cb">
+                            <input type="checkbox" id="typeLayers" checked hidden>
+                            <label for="typeLayers" class="cb-btn">TCP/IP Layers</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="setting-group">
+                    <label for="questionCount">Number of Questions:</label>
+                    <input type="number" id="questionCount" value="5" min="1" max="20">
+                </div>
+
+                <button id="startQuizBtn" class="primary-btn">Start Quiz</button>
+                <p id="setupError" style="color:var(--accent); display:none;">Please select at least one type!</p>
+            </div>
+
+            <div id="quizContent" class="hidden-view">
+                <h2 id="questionText"></h2>
+                <div id="quizAnswerContainer" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin:20px 0;"></div>
+                <p id="inputWarning" class="warning-text"></p>
+                <div class="action-buttons">
+                    <button id="submitAnswer" class="primary-btn">Submit</button>
+                    <button id="continueBtn" class="primary-btn hidden-view">Continue</button>
+                </div>
+                <p id="quizFeedback"></p>
+                <p id="quizExplanation" class="explanation-text"></p>
+            </div>
+
+            <div id="quizResults" class="hidden-view">
+                <h2>Quiz Complete!</h2>
+                <p id="scoreText" style="text-align:center; font-size:1.5rem; margin-bottom:20px;"></p>
+                <button id="restartQuiz" class="primary-btn">New Quiz</button>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
