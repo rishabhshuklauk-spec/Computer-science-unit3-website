@@ -232,6 +232,8 @@ function checkAnswer() {
     if(submitAnswer) submitAnswer.classList.add('hidden-view');
     if(continueBtn) {
         continueBtn.classList.remove('hidden-view');
+        // Prevent instant skip if user double taps or holds Enter
+        setTimeout(() => { window.canContinue = true; }, 300);
     }
 }
 
@@ -241,6 +243,7 @@ if (submitAnswer) {
 
 if (continueBtn) {
     continueBtn.addEventListener('click', () => {
+        window.canContinue = false;
         currentQuestionIndex++;
         if (currentQuestionIndex < quizQuestions.length) {
             loadQuestion();
@@ -251,6 +254,15 @@ if (continueBtn) {
         }
     });
 }
+
+// Allow Enter key to trigger continue
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && window.canContinue && continueBtn && !continueBtn.classList.contains('hidden-view')) {
+        e.preventDefault();
+        continueBtn.click();
+    }
+});
+
 
 const restartQuiz = document.getElementById('restartQuiz');
 if (restartQuiz) {
